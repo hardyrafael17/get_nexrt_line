@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjimenez <hjimenez@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: hjimenez <hjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 18:39:39 by hjimenez          #+#    #+#             */
-/*   Updated: 2022/02/27 19:31:13 by hjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/28 19:08:34 by hjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

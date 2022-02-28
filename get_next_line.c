@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjimenez <hjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 08:13:09 by hjimenez          #+#    #+#             */
-/*   Updated: 2022/02/28 15:30:36 by hjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/28 18:58:30 by hjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
 	t_fd		*fd_list_data;
-	char		*to_return;
 	static void	*fd_keep[1024];
 	int			i;
 
@@ -32,10 +31,12 @@ char	*get_next_line(int fd)
 		fd_list_data = ft_calloc(1, sizeof(t_fd));
 	ft_read(fd_list_data, fd);
 	*(fd_keep + i) = fd_list_data;
-	to_return = ft_return_line(fd_list_data);
-	if (!to_return)
+	fd_list_data->to_return = ft_return_line(fd_list_data);
+	if (!fd_list_data->to_return)
+	{
 		*(fd_keep + i) = (void *)1;
-	return (to_return);
+	}
+	return (fd_list_data->to_return);
 }
 
 size_t	ft_check_nl(char *read_buffer, size_t size)
@@ -77,30 +78,30 @@ int	ft_append(char *to_append, t_fd *update_bf)
 char	*ft_return_line(t_fd *b_update)
 {
 	size_t	nl_index;
-	char	*to_free;
-	char	*to_return;
-	int		string_length;
 
-	to_free = b_update->left_over;
+	b_update->to_free = b_update->left_over;
 	if (!b_update->left_over)
+	{
+		free(b_update);
 		return (NULL);
-	string_length = ft_strlcpy_strlen(NULL, b_update->left_over, 0);
-	nl_index = ft_check_nl(b_update->left_over, string_length);
+	}
+	b_update->s_length = ft_strlcpy_strlen(NULL, b_update->left_over, 0);
+	nl_index = ft_check_nl(b_update->left_over, b_update->s_length);
 	if (b_update->eof == 1 && nl_index == 0)
 	{
-		if (string_length == 0)
+		if (b_update->s_length == 0)
 		{
-			free(to_free);
+			free(b_update->to_free);
 			free(b_update);
 			return (NULL);
 		}
 		b_update->left_over = NULL;
-		return (to_free);
+		return (b_update->to_free);
 	}
-	to_return = ft_substr(b_update->left_over, 0, nl_index);
+	b_update->to_return = ft_substr(b_update->left_over, 0, nl_index);
 	b_update->left_over = ft_strjoin("", b_update->left_over + nl_index);
-	free(to_free);
-	return (to_return);
+	free(b_update->to_free);
+	return (b_update->to_return);
 }
 
 void	ft_read(t_fd *fd_list_data, int fd)

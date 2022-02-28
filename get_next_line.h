@@ -6,7 +6,7 @@
 /*   By: hjimenez <hjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 08:22:33 by hjimenez          #+#    #+#             */
-/*   Updated: 2022/02/28 15:53:36 by hjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/28 19:14:22 by hjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ typedef struct fd_data_list
 	char		*left_over;
 	int			eof;
 	int			return_null;
-}				t_fd;		
+	int			s_length;
+	char		*to_return;
+	char		*to_free;
+}				t_fd;
 
 size_t			ft_check_nl(char *read_buffer, size_t size);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
