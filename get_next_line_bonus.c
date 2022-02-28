@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjimenez <hjimenez@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: hjimenez <hjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 08:13:09 by hjimenez          #+#    #+#             */
-/*   Updated: 2022/02/27 19:27:34 by hjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:30:36 by hjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ char	*ft_return_line(t_fd *b_update)
 	free(to_free);
 	return (to_return);
 }
+
 void	ft_read(t_fd *fd_list_data, int fd)
 {
 	char			*read_buffer;

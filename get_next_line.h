@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjimenez <hjimenez@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: hjimenez <hjimenez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 08:22:33 by hjimenez          #+#    #+#             */
-/*   Updated: 2022/02/27 19:17:56 by hjimenez         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:53:36 by hjimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -34,6 +34,6 @@ char			*get_next_line(int fd);
 int				ft_append(char *to_append, t_fd *buffer_to_update);
 char			*ft_return_line(t_fd *buffer_to_update);
 void			ft_read(t_fd *t_fd_data, int fd);
-size_t 			ft_strlcpy_strlen(char *dst, const char *src, size_t size);
+size_t			ft_strlcpy_strlen(char *dst, const char *src, size_t size);
 
 #endif
